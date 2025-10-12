@@ -56,9 +56,10 @@ const cateogories = [
 
 const Categories = () => {
   const searchParams = useSearchParams();
-  const selectedCategory = searchParams.get("category");
   const router = useRouter();
   const pathname = usePathname();
+
+  const selectedCategory = searchParams.get("category");
 
   const handleChange = (value: string | null) => {
     const params = new URLSearchParams(searchParams)
