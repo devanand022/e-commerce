@@ -125,6 +125,22 @@ const CartPage = () => {
                       className="object-cotain"
                     />
                   </div>
+                  {/* Item Details */}
+                  <div className="flex flex-col justify-between">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-sm font-medium">{item.name}</p>
+                      <p className="text-xs text-gray-500">
+                        Quantity: {item.quantity}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Size: {item.SelectedSize.toUpperCase()}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Color: {item.SelectedColor}
+                      </p>
+                    </div>
+                    <p className="font-medium">${item.price.toFixed(2)}</p>
+                  </div>
                 </div>
                 {/* Delete Button */}
                 <button className="w-8 h-8 rounded-full bg-red-100 text-red-400 flex items-center justify-center cursor-pointer hover:bg-red-200 transition-all duration-300">
@@ -132,7 +148,9 @@ const CartPage = () => {
                 </button>
               </div>
             ))}
-          {activeStep === 2 && <ShippingForm />}
+          {activeStep === 2 && (
+            <ShippingForm setShippingForm={setShippingForm} />
+          )}
           {activeStep === 3 &&
             (shippingForm ? (
               <PaymentForm />
@@ -143,7 +161,7 @@ const CartPage = () => {
             ))}
         </div>
         {/* Details */}
-        <div className="w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8">
+        <div className="w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg flex flex-col gap-8 h-max">
           <h2 className="font-semibold">Cart Details</h2>
           <div className="flex flex-col gap-4">
             <div className="flex justify-between text-sm">
