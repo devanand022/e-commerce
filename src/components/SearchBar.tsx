@@ -14,3 +14,4 @@ const SerachBar = () => {
 };
 
 export default SerachBar;
+                                
