@@ -1,7 +1,6 @@
 import ProductInteraction from "@/components/ProductInteraction";
 import { ProductType } from "@/types";
 import Image from "next/image";
-import { title } from "process";
 
 const product: ProductType = {
   id: 1,
