@@ -3,19 +3,17 @@
 import PaymentForm from "@/components/PaymentForm";
 import ShippingForm from "@/components/ShippingForm";
 import useCartStore from "@/stores/cartStores";
-import { CartItemsType, ShippingFormInputs } from "@/types";
+import { ShippingFormInputs } from "@/types";
 import { ArrowRight, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 const steps = [
   { id: 1, title: "Shopping Cart" },
   { id: 2, title: "Shipping Address" },
   { id: 3, title: "Payment Method" },
 ];
-
-// const cartItems: CartItemsType = [
 //   {
 //     id: 1,
 //     name: "Adidas CoreFit T-Shirt",
@@ -71,7 +69,7 @@ const steps = [
 //   },
 // ];
 
-const CartPage = () => {
+const Cart = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [shippingForm, setShippingForm] = useState<ShippingFormInputs>();
@@ -212,6 +210,14 @@ const CartPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const CartPage = () => {
+  return (
+    <Suspense fallback={<div>Loading Cart...</div>}>
+      <Cart />
+    </Suspense>
   );
 };
 
